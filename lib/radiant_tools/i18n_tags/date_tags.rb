@@ -1,4 +1,4 @@
-module RadiantTools::I18nDate
+module RadiantTools::I18nTags::DateTags
   def self.init
     Page.send :include, self
   end

@@ -1,4 +1,4 @@
-module RadiantTools::ReverseBreadcrumbs
+module RadiantTools::ReverseBreadcrumbsTags
   def self.init
     Page.send :include, self
   end
