@@ -1,11 +1,14 @@
 # Uncomment this if you reference any of your controllers in activate
-# require_dependency 'application_controller'
+require_dependency 'application_controller'
 
 class RadiantToolsExtension < Radiant::Extension
   version "0.1"
   description "Various tools (method, tags) for Radiant projects"
   url "http://github.com/mikz/radiant_tools"
   
+  define_routes do |map|
+    map.get 'ping', :controller => :ping, :action => :index
+  end
   
   extension_config do |config|
     RadiantTools::Config.update config
