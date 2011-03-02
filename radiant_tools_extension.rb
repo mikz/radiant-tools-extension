@@ -6,17 +6,8 @@ class RadiantToolsExtension < Radiant::Extension
   description "Various tools (method, tags) for Radiant projects"
   url "http://github.com/mikz/radiant_tools"
   
-  define_routes do |map|
-    map.get 'ping', :controller => :ping, :action => :index
-  end
-  
   extension_config do |config|
-    RadiantTools::Config.update config
-#   config.gem 'some-awesome-gem
-#   config.after_initialize do
-#     run_something
-#   end
-    
+    RadiantTools::Config.update config    
   end
 
   # See your config/routes.rb file in this extension to define custom routes
