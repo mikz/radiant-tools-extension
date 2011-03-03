@@ -13,13 +13,15 @@ module RadiantTools
       config.gem "rack-cache"
       config.gem "redis-store"
     
-      RedisRadiantStore.init
+      
       
       config.middleware.use ::Radiant::Cache,
         :metastore   => "redis://#{REDIS}/meta_store",
         :entitystore => "redis://#{REDIS}/entity_store",
         :verbose => true
-        
+      
+      RedisRadiantStore.init
+      
       config.cache_store = :redis_store, "redis://#{REDIS}/cache_store"
     end
   end

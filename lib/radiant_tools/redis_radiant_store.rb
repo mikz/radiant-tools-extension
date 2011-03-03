@@ -1,5 +1,22 @@
 module RadiantTools::RedisRadiantStore
   def self.init
+    
+    Rack::Cache::MetaStore.class_eval do
+      def marshalable?(value)
+        begin
+          Marshal.dump(value)
+        rescue TypeError
+          false
+        end
+      end
+      
+      def persist_request(request)
+        env = request.env.dup
+        env.reject! { |key,val| (key =~ /[^0-9A-Z_]/) || !marshalable?(val) }
+        env
+      end
+    end
+    
     [Rack::Cache::MetaStore::Redis, Rack::Cache::EntityStore::Redis].each do |klass|
       klass.class_eval do
         def initialize(server, options = {})
@@ -13,6 +30,8 @@ module RadiantTools::RedisRadiantStore
         end
       end
     end
+    
+    
     
   end
 end
