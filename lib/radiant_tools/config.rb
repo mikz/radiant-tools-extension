@@ -7,7 +7,7 @@ module RadiantTools
     
       config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
         r301 %r{^\/(.+?)(?:\/)(\?.+)$}, '/$1$2', :if => lambda { |env| env['REQUEST_METHOD'].to_sym == :GET } # redirect action/?query to just action?query
-        r301 %r{^\/([^?]+[^\/])$}, '/$1/', :if => lambda { |env| env['REQUEST_METHOD'].to_sym == :GET } # add trailing slash instead of removing it
+        r301 %r{^\/([^?]+[^\/])$}, '/$1/', :if => lambda { |env| env['REQUEST_METHOD'].to_sym == :GET && !env['PATH_INFO'].starts_with?("/admin/") } # add trailing slash instead of removing it
       end
     
       config.gem "rack-cache"
