@@ -1,0 +1,22 @@
+GIT
+  remote: git://github.com/mikz/rack-rewrite
+  revision: db0b9378a8369462f54b0d1ff7da56b615d51476
+  specs:
+    rack-rewrite (1.1.0)
+
+PATH
+  remote: .
+  specs:
+    radiant_tools (0.2)
+      rack-rewrite (~> 1.1.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rack-rewrite!
+  radiant_tools!

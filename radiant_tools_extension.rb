@@ -2,12 +2,12 @@
 require_dependency 'application_controller'
 
 class RadiantToolsExtension < Radiant::Extension
-  version "0.1"
+  version RadiantTools::VERSION
   description "Various tools (method, tags) for Radiant projects"
   url "http://github.com/mikz/radiant_tools"
   
   extension_config do |config|
-    RadiantTools::Config.update config    
+    RadiantTools::Config.update config
   end
 
   # See your config/routes.rb file in this extension to define custom routes

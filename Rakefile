@@ -1,17 +1,3 @@
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "radiant-radiant_tools-extension"
-    gem.summary = %Q{Radiant Tools Extension for Radiant CMS}
-    gem.description = %Q{Describe your extension here}
-    gem.email = "m@o2h.cz"
-    gem.homepage = "http://yourwebsite.com/radiant_tools"
-    gem.authors = ["Your Name"]
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. This is only required if you plan to package radiant_tools as a gem."
-end
 
 # In rails 1.2, plugins aren't available in the path until they're loaded.
 # Check to see if the rspec plugin is installed first and require
