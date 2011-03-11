@@ -1,7 +1,7 @@
 # Uncomment this if you reference any of your controllers in activate
 require_dependency 'application_controller'
 
-class RadiantToolsExtension < Radiant::Extension
+class ToolsExtension < Radiant::Extension
   version RadiantTools::VERSION
   description "Various tools (method, tags) for Radiant projects"
   url "http://github.com/mikz/radiant_tools"

@@ -1,4 +1,6 @@
 module RadiantTools
+  autoload :VERSION, "radiant_tools/version"
+  
   def self.init modules
     init_modules case modules
     when String
