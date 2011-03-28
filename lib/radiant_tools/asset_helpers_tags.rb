@@ -32,7 +32,7 @@ module RadiantTools::AssetHelpersTags
       end
     end
     
-    response.template.send("path_to_#{name}".to_sym, value).inspect
+    template.send("path_to_#{name}".to_sym, value).inspect
   end
   
   desc %{
@@ -40,7 +40,7 @@ module RadiantTools::AssetHelpersTags
     <pre><code><r:stylesheet name="stylesheet.css" [media="print"]/></code></pre>
   }
   tag "stylesheet" do |tag|
-    response.template.send :stylesheet_link_tag, tag.attr.delete("name"), tag.attr
+    template.send :stylesheet_link_tag, tag.attr.delete("name"), tag.attr
   end
   
   desc %{
@@ -48,7 +48,9 @@ module RadiantTools::AssetHelpersTags
     <pre><code><r:javascript name="app.js" [async]/></code></pre>
   }
   tag "javascript" do |tag|
-    response.template.send :javascript_include_tag, tag.attr.delete("name"), tag.attr
+    template.send :javascript_include_tag, tag.attr.delete("name"), tag.attr
   end
+  
+  delegate :teplate, :to => :response, :allow_nil => true
   
 end

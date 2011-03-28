@@ -24,6 +24,6 @@ module RadiantTools
   end
   
   def self.all_modules(ext = "rb")
-    [AssetHelpersTags, I18nTags, ReverseBreadcrumbsTags, TagAttributes].map
+    [AssetHelpersTags, I18nTags, ReverseBreadcrumbsTags, TagAttributes, Visibility, AdminLocale, EnforceAdmin].map
   end
 end

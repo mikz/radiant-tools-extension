@@ -3,15 +3,15 @@ module RadiantTools
     def self.update(config)
       config.gem 'rack-rewrite'
     
-      require 'rack-rewrite' unless defined?(Rack::Rewrite)
-
+      require 'rack-rewrite'
+      
       config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
         r301 %r{^\/(.+?)(?:\/)(\?.+)$}, '/$1$2', :method => 'GET' # redirect action/?query to just action?query
         r301 %r{^\/([^?]+[^\/])$}, '/$1/', :method => 'GET', :not => /^\/admin\// # add trailing slash instead of removing it
       end
     
-      config.gem "rack-cache"
-      config.gem "redis-store"
+      config.gem 'rack-cache'
+      config.gem 'redis-store'
       
       config.middleware.use ::Radiant::Cache,
         :metastore   => "redis://#{REDIS}/meta_store",

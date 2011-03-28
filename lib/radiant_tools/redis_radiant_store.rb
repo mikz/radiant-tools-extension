@@ -17,6 +17,8 @@ module RadiantTools::RedisRadiantStore
       end
     end
     
+    require 'redis-store' unless defined?(Rack::Cache::MetaStore::Redis)
+    
     [Rack::Cache::MetaStore::Redis, Rack::Cache::EntityStore::Redis].each do |klass|
       klass.class_eval do
         def initialize(server, options = {})
