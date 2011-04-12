@@ -40,7 +40,7 @@ module RadiantTools::AssetHelpersTags
     <pre><code><r:stylesheet name="stylesheet.css" [media="print"]/></code></pre>
   }
   tag "stylesheet" do |tag|
-    template.send :stylesheet_link_tag, tag.attr.delete("name"), tag.attr
+    template.send :stylesheet_link_tag, tag.attr.delete(:name), tag.attr
   end
   
   desc %{
@@ -48,7 +48,22 @@ module RadiantTools::AssetHelpersTags
     <pre><code><r:javascript name="app.js" [async]/></code></pre>
   }
   tag "javascript" do |tag|
-    template.send :javascript_include_tag, tag.attr.delete("name"), tag.attr
+    template.send :javascript_include_tag, tag.attr.delete(:name), tag.attr
+  end
+  
+  desc %{
+    *Usage:*
+    <pre><code><r:image [name="mage.png"] [field="Small image"]/></code></pre>
+  }
+  tag "image" do |tag|
+    
+    if field_name = tag.attr.delete(:field).presence
+      name = self.field(field_name)
+    else
+      name = tag.attr.delete(:name)
+    end
+    
+    template.send :image_tag, name, tag.attr
   end
   
   delegate :teplate, :to => :response, :allow_nil => true
