@@ -63,7 +63,7 @@ module RadiantTools::AssetHelpersTags
       name = tag.attr.delete(:name)
     end
     
-    template.send :image_tag, name, tag.attr
+    template.send :image_tag, name, tag.attr if name
   end
   
   delegate :teplate, :to => :response, :allow_nil => true
