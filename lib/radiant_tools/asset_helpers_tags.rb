@@ -58,7 +58,7 @@ module RadiantTools::AssetHelpersTags
   tag "image" do |tag|
     if field_name = tag.attr.delete(:field).presence
       field = tag.locals.page.field(field_name)
-      name = field.content if field
+      name = field.content.presence if field
     else
       name = tag.attr.delete(:name).presence
     end
