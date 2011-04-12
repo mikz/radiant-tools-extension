@@ -56,13 +56,12 @@ module RadiantTools::AssetHelpersTags
     <pre><code><r:image [name="mage.png"] [field="Small image"]/></code></pre>
   }
   tag "image" do |tag|
-    
     if field_name = tag.attr.delete(:field).presence
-      name = self.field(field_name)
+      field = tag.locals.page.field(field_name)
+      name = field.content if field
     else
-      name = tag.attr.delete(:name)
+      name = tag.attr.delete(:name).presence
     end
-    
     template.send :image_tag, name, tag.attr if name
   end
   
