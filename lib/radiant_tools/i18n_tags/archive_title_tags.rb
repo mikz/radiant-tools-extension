@@ -1,7 +1,6 @@
 module RadiantTools::I18nTags::ArchiveTitleTags
   def self.init
     Page.descendants.each do |klass|
-      next unless klass.included_modules.include?(ArchiveIndexTagsAndMethods) # filter classes which have included archive title method
       klass.send :include, self # override original title function
     end
   end
