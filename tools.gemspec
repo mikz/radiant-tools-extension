@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   #s.rubyforge_project = "radiant_tools"
   s.add_dependency 'rack-rewrite', '~> 1.1.0'
-  s.add_dependency 'radiant', '>= 0.9.0'
+  s.add_dependency 'radiant', '>= 1.1.1'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
