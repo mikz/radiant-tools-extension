@@ -1,12 +1,13 @@
 module RadiantTools::I18nTags::ArchiveTitleTags
   def self.init
     Page.descendants.each do |klass|
+      next unless klass.included_modules.include?(ArchiveIndexTagsAndMethods)
       klass.send :include, self # override original title function
     end
   end
-  
+
   include Radiant::Taggable
-    
+
   tag "title" do |tag|
     setup_date_parts
     page = tag.locals.page
@@ -16,5 +17,5 @@ module RadiantTools::I18nTags::ArchiveTitleTags
       page.title
     end
   end
-  
+
 end
